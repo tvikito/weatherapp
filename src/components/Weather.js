@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 import Loading from './Loading';
-import Error from './Error'
+import Error from './Error';
 import WeatherForm from './WeatherForm';
 import WheatherData from "./WeatherData";
 
@@ -16,20 +16,17 @@ function Weather() {
 
     location.clear();
     weather.clear();
-    weather.fetchUrl(`api/weather?city=${city}`);
+    weather.fetchUrl(`/api/weather?city=${city}`);
   }
 
   useEffect(() => {
     location.fetchUrl('/api/current-location')
-      .then(res => {
-        weather.fetchUrl(`api/weather?city=${res.city}&country=${res.country_code}`);
-      })
+      .then(res => weather.fetchUrl(`/api/weather?city=${res.city}&country=${res.country_code}`))
       .catch(err => console.log('Promise rejected with error', err))
   }, [])
   
   if (weather.error || location.error) {
     const error = weather.error ? weather.error : location.error;
-    console.log('Error', error);
     
     return (
       <div>

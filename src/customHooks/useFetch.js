@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 function useFetch() {
   const [data, setData] = useState();
@@ -11,20 +11,18 @@ function useFetch() {
     return await new Promise(async (resolve, reject) => {      
       await fetch(url)
         .then(res => res.json())
-        .then(res => {
-          console.log(typeof Number(res.cod), Number(res.cod));
-          
-          if (Number(res.cod) > 400) {
+        .then(res => {          
+          if (Number(res.cod) >= 400) {
             setError(res.message);
             reject(res.message);
           }
           
-          resolve(res)
+          resolve(res);
           setData(res);
         })
         .catch(err => {
           console.log('error from catch:', err.message);
-          setError('Cannot connect to server to get your data. Please try again it later.')
+          setError('Cannot connect to server to get your data. Please try again it later.');
           reject(err);
         });
 

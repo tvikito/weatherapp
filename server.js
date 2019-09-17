@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const axios = require('axios')
+const axios = require('axios');
 
 const port = 5000;
 
@@ -25,7 +25,7 @@ app.get('/api/weather', (req, res) => {
 	axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}${countryCode}&APPID=${API_KEY}&units=metric`)
 		.then(function (response) {
 			console.log('Weather data: ', response.data);
-			res.json(response.data)
+			res.json(response.data);
 		})
 		.catch(function (err) {
 			console.error('Weather ERROR!', err.response.data.message);
@@ -36,7 +36,7 @@ app.get('/api/weather', (req, res) => {
 
 app.listen(port, (err) => {
 	if (err) {
-		console.error(err)
-	};
+		console.error(err);
+	}
 	console.log('Listening on port ' + port);
 })
