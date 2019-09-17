@@ -1,5 +1,6 @@
 {
   "name": "weatherapp",
+  "homepage": "https://tvikito.github.io/weatherapp",
   "version": "0.1.0",
   "private": true,
   "main": "server.js",
@@ -7,6 +8,7 @@
     "axios": "^0.19.0",
     "concurrently": "^4.1.2",
     "express": "^4.17.1",
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "3.1.1",
@@ -17,7 +19,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && npm server",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "server": "nodemon server.js",
